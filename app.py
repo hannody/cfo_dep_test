@@ -7,6 +7,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 
+st.title('Somthing')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Create DataFrame
