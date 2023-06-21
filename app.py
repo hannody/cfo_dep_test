@@ -7,7 +7,8 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 
-st.title('Somthing')
+st.title('Welcome')
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Create DataFrame
@@ -23,6 +24,12 @@ map_data = pd.DataFrame(
     columns=['lat', 'lon'])
 
 st.map(df)
+
+st.bar_chart(df)
+
+st.color_picker('Pick A Color', '#00f900')
+
+st.area_chart(df)
 
 x = st.slider('x')  # 👈 this is a widget
 st.write(x, 'squared is', x * x)
@@ -67,3 +74,34 @@ with right_column:
         'Sorting hat',
         ("Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"))
     st.write(f"You are in {chosen} house!")
+
+
+
+
+# Create DataFrame
+df = pd.DataFrame({
+    'x': [1, 2, 3, 4],
+    'y1': [10, 20, 30, 40],
+    'y2': [20, 30, 40, 50]
+})
+
+# Plot area chart using pandas and Matplotlib
+df.set_index('x', inplace=True)
+plt.fill_between(df.index, df['y1'], df['y2'], alpha=0.5)
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Area Chart')
+st.pyplot()
+
+
+# Create DataFrame
+df = pd.DataFrame({
+    'category': ['A', 'B', 'C', 'D'],
+    'values': [30, 40, 20, 10]
+})
+
+# Plot pie chart using pandas and Matplotlib
+plt.pie(df['values'], labels=df['category'], autopct='%1.1f%%')
+plt.axis('equal')
+plt.title('Pie Chart')
+st.pyplot()
